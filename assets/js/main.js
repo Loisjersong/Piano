@@ -58,11 +58,6 @@ const keyPlay = event => {
     
 }
 
-// separate to keyPlay function to avoid playing pianoKeys() function twice
-const keyPlayMobile = event => {
-    event.target.style.backgroundColor = '#ADD8E6';
-}
-
 // this function returns the keys to original color
 const keyReturn = event => {
     event.target.style.backgroundColor = '';
@@ -72,7 +67,8 @@ const keyReturn = event => {
 const keyActive = note => {
     note.addEventListener('mousedown', keyPlay);
     note.addEventListener('mouseup', keyReturn);
-    note.addEventListener('touchstart', keyPlayMobile);
+    note.addEventListener('touchstart', keyPlay);
+    note.addEventListener('touchend', keyReturn);
 }
 
 // this statement calls keyActive function to notes array
